@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { userThunk } from '../reducers/usersReducer';
+import Login from './Login';
+import {Switch, withRouter, Route} from 'react-router-dom';
 
 
 class Main extends React.Component {
@@ -14,11 +16,14 @@ class Main extends React.Component {
 
   render() {
     return (
-      <ol>
-      {this.props.user ? <li>
-        {this.props.user.name}
-      </li> : <p>hi</p>}
-      </ol>
+      <div>
+        <Switch>
+          <Route exact path='/' component={Login}/>
+          <Route exact path='/login' component={Login}/>
+          {/* <Route exact path='/users' component={Users}/>
+          <Route exact path='/users/:id' component={Profile}/> */}
+        </Switch>
+      </div>
     )
   }
 }
@@ -33,4 +38,4 @@ const mapDispatchToProps = (dispatch) => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));
