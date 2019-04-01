@@ -2,8 +2,9 @@ const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const path = require('path');
+const mongoose = require('mongoose');
 
-
+// main app
 const app = express();
 
 // logging middleware
@@ -33,8 +34,18 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500).send(err.message || 'Internal server error.');
 });
 
+// DB config
+const db = require('../config/keys').mongoURI;
+
+// Connect to MongoDB
+mongoose.connect(db, {useNewUrlParser: true})
+    .then(() => console.log("db connected"))
+    .catch((err) => console.log(err));
+
+
 // port for deployment or local 3000
 const port = process.env.PORT || 3000;
 app.listen(port, function () {
   console.log(`Server is listening on port ${port}`);
 });
+
