@@ -7,6 +7,7 @@
     "build-client": "webpack",
     "build-client-watch": "webpack -w",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "script/deploy",
     "start": "node server",
     "start-dev": "NODE_ENV='development' npm run build-client-watch & NODE_ENV='development' npm run start-server",
     "start-server": "nodemon server -e html,js,scss --ignore public --ignore client"
@@ -27,6 +28,7 @@
     "@babel/preset-env": "^7.4.2",
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
+    "bcrypt": "^3.0.5",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "history": "^4.9.0",
