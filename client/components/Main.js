@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { userThunk } from '../reducers/usersReducer';
+import { userThunk, allUsersThunk, deleteUserThunk } from '../reducers/usersReducer';
 import Login from './Login';
 import {Switch, withRouter, Route} from 'react-router-dom';
 
@@ -8,10 +8,17 @@ import {Switch, withRouter, Route} from 'react-router-dom';
 class Main extends React.Component {
   constructor() {
     super();
+    this.state = {}
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
-  async componentDidMount() {
-    await this.props.userThunk();
+  componentDidMount() {
+    this.props.userThunk();
+    this.props.allUsersThunk();
+  }
+
+  handleDelete(userId) {
+    this.props.deleteUserThunk(userId)
   }
 
   render() {
@@ -23,18 +30,32 @@ class Main extends React.Component {
           {/* <Route exact path='/users' component={Users}/>
           <Route exact path='/users/:id' component={Profile}/> */}
         </Switch>
+
+      <ul>
+        {this.props.users ? this.props.users.map(user => {
+          return <li key={user._id} onClick={() => this.handleDelete(user._id)}>{user.name}</li>
+        }): ""}
+      </ul>
+
       </div>
     )
   }
 }
 
 const mapStateToProps = (state) => ({
-  user: state.user
+  user: state.user,
+  users: state.users
 })
 
 const mapDispatchToProps = (dispatch) => ({
   userThunk() {
     dispatch(userThunk());
+  },
+  allUsersThunk() {
+    dispatch(allUsersThunk());
+  },
+  deleteUserThunk(userId) {
+    dispatch(deleteUserThunk(userId));
   }
 })
 

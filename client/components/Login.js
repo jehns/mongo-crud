@@ -35,6 +35,7 @@ class Login extends React.Component {
 
   render() {
     return (
+      <div>
       <form onSubmit={this.handleSubmit}>
 
         <label>Name</label>
@@ -46,6 +47,10 @@ class Login extends React.Component {
         <input type="submit"/>
 
       </form>
+
+
+
+      </div>
     )
   }
 }
