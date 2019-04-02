@@ -9,7 +9,8 @@ class Login extends React.Component {
     super();
     this.state = {
       nameInput: "",
-      emailInput: ""
+      emailInput: "",
+      passwordInput: ""
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,11 +19,12 @@ class Login extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    this.props.newUserThunk({name: this.state.nameInput, email: this.state.emailInput});
+    this.props.newUserThunk({name: this.state.nameInput, email: this.state.emailInput, password: this.state.passwordInput});
 
     this.setState({
       nameInput: "",
-      emailInput: ""
+      emailInput: "",
+      passwordInput: ""
     });
 
   }
@@ -43,6 +45,9 @@ class Login extends React.Component {
 
         <label>Email</label>
         <input type="text" name="emailInput" onChange={this.handleChange} value={this.state.emailInput}/>
+
+        <label>Password</label>
+        <input type="text" name="passwordInput" onChange={this.handleChange} value={this.state.passwordInput}/>
 
         <input type="submit"/>
 

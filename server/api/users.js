@@ -23,7 +23,7 @@ router.post('/', async (req, res, next) => {
     if (userExists) {
       res.sendStatus(400);
     } else {
-      const newUser = await new User({name: req.body.name, email: req.body.email}).save();
+      const newUser = await new User({name: req.body.name, email: req.body.email, password: req.body.password}).save();
       res.json(newUser);
     }
   } catch(err) { console.log(err) }
