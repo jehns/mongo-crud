@@ -24,13 +24,14 @@ class Main extends React.Component {
   render() {
     return (
       <div>
+      <h2>Mongo CRUD App</h2>
         <Switch>
           <Route exact path='/' component={Login}/>
           <Route exact path='/login' component={Login}/>
           {/* <Route exact path='/users' component={Users}/>
           <Route exact path='/users/:id' component={Profile}/> */}
         </Switch>
-
+      <p>click user to delete</p>
       <ul>
         {this.props.users ? this.props.users.map(user => {
           return <li key={user._id} onClick={() => this.handleDelete(user._id)}>{user.name}</li>
