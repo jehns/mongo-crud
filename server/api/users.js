@@ -24,7 +24,7 @@ router.post('/', async (req, res, next) => {
       res.sendStatus(400);
     } else {
       const newUser = await new User({name: req.body.name, email: req.body.email}).save();
-      res.json(newUser)
+      res.json(newUser);
     }
   } catch(err) { console.log(err) }
 });

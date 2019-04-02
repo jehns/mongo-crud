@@ -6,7 +6,7 @@ import {withRouter} from 'react-router-dom';
 
 class Login extends React.Component {
   constructor() {
-    super()
+    super();
     this.state = {
       nameInput: "",
       emailInput: ""
