@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const User = require('../models/User');
-const mongoose = require('mongoose');
 
 // matches GET requests to /api/users/
 router.get('/', async (req, res, next) => {
