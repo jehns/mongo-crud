@@ -15,11 +15,14 @@ mongoose.connect(db, {useNewUrlParser: true})
     .then(() => console.log("db connected"))
     .catch((err) => console.log(err));
 
+
 // logging middleware
 app.use(morgan('dev'));
 
+
 // static file-serving middleware
 app.use(express.static(path.join(__dirname, '..', 'public')))
+
 
 // body parsing middleware
 app.use(bodyParser.json());
