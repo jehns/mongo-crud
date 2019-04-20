@@ -4,7 +4,7 @@ const User = require('../models/User');
 // matches GET requests to /api/users/
 router.get('/', async (req, res, next) => {
   try {
-    User.findOne({})
+    User.findOne({});
   } catch(err) { console.log(err) }
 });
 
