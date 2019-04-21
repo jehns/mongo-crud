@@ -5,7 +5,7 @@ const User = require('../models/User');
 router.get('/', async (req, res, next) => {
   try {
     User.findOne({});
-  } catch(err) { console.log(err) }
+  } catch(err) {console.log(err)}
 });
 
 router.get('/all', async (req, res, next) => {
